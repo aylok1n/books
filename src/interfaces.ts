@@ -9,6 +9,7 @@ export type viewMode = 'cards' | 'table'
 
 
 export interface Book {
+    id: string,
     title?: string,
     subtitle?: string,
     authors?: string[],

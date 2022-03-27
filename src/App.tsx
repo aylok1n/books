@@ -13,10 +13,13 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Navigate to={'books'} />} />
-          <Route path="books" element={<MainPage />}>
-            <Route path=":bookid" element={<BookPage />} />
+          <Route path="/books">
+            <Route index element={<MainPage />} />
+            <Route path=":id" element={<BookPage />} />
           </Route>
+
         </Route>
+        <Route path='*' element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );

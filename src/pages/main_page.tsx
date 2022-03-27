@@ -19,8 +19,13 @@ export const MainPage = () => {
     }, [])
 
     const getBooks = async () => {
-        const books = await request({ url: 'https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=AIzaSyDrEmuaPcEbdKK38NTjnSZHWfRe75bttts' })
-        updateBooks(books?.items?.map((item: any) => item.volumeInfo))
+        const books = await request({ url: 'https://www.googleapis.com/books/v1/volumes?q=:keyes&key=AIzaSyDrEmuaPcEbdKK38NTjnSZHWfRe75bttts' })
+        updateBooks(books?.items?.map((item: any) => {
+            return {
+                id: item.id,
+                ...item.volumeInfo
+            }
+        }))
     }
 
     const renderBooks = () => {

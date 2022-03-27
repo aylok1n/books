@@ -9,6 +9,7 @@ import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Book } from '../interfaces';
+import { useNavigate } from 'react-router-dom';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -27,13 +28,14 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 export default function BookCard({ book }: { book: Book }) {
     const [expanded, setExpanded] = React.useState(false);
-
-    const handleExpandClick = () => {
+    let navigate = useNavigate();
+    const handleExpandClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation()
         setExpanded(!expanded);
     };
 
     return (
-        <Card sx={{ width: 345, margin: 3 }}>
+        <Card onClick={() => navigate(`:${book.id}`)} sx={{ width: 345, margin: 3 }}>
             <CardMedia
                 component="img"
                 height="195"
