@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route path="/">
           <Route index element={<Navigate to={'books'} />} />
           <Route path="books" element={<MainPage />}>
             <Route path=":bookid" element={<BookPage />} />
