@@ -4,4 +4,4 @@
 3) `npm install`
 4) `npm run start`
 
-app deployed to githup pages `aylok1n.github.io/books/`
+app deployed to github pages `https://aylok1n.github.io/books/`
