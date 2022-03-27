@@ -1,10 +1,24 @@
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { BookPage } from "./pages/book_page";
+import { MainPage } from "./pages/main_page";
+
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<Navigate to={'books'} />} />
+          <Route path="books" element={<MainPage />}>
+            <Route path=":bookid" element={<BookPage />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
