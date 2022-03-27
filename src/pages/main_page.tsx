@@ -3,6 +3,8 @@ import { useStore } from 'effector-react'
 import { $books, updateBooks } from "../effector/books"
 import { useEffect } from "react"
 import LinearProgress from '@mui/material/LinearProgress';
+import BookCard from "../components/BookCard";
+import SelectViewMode from "../components/SelectViewMode";
 
 export const MainPage = () => {
     const { loader, request } = useFetch()
@@ -20,7 +22,10 @@ export const MainPage = () => {
     return (
         <div>
             {!!loader && <LinearProgress />}
-            {JSON.stringify(books)}
+            <SelectViewMode />
+            <div className="flex flex-row flex-wrap">
+                {books.map((book, index) => <BookCard key={index} book={book} />)}
+            </div>
         </div>
     )
 }
