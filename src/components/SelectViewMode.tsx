@@ -6,12 +6,13 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useEffect, useState } from 'react';
 import { $viewmode, updateViewmode } from '../effector/viewMode';
 import { useStore } from 'effector-react';
+import { viewMode as viewModeType } from '../interfaces';
 
 export default function SelectViewMode() {
     const viewMode = useStore($viewmode)
 
     const handleChange = (event: SelectChangeEvent) => {
-        const value = event.target.value as "cards" | "table"
+        const value = event.target.value as viewModeType
         localStorage.setItem('viewMode', value)
         updateViewmode(value)
     };

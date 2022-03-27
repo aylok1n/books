@@ -1,11 +1,7 @@
 import { useCallback, useState } from "react"
+import { FetchParams } from "../interfaces"
 
-interface FetchParams {
-    url: string,
-    method?: 'GET' | 'POST',
-    body?: any,
-    headers?: any
-}
+
 
 export const useFetch = () => {
     const [loader, setLoader] = useState<boolean>(false)

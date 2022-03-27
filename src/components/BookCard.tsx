@@ -8,6 +8,7 @@ import Collapse from '@mui/material/Collapse';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Book } from '../interfaces';
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -24,7 +25,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 
-export default function BookCard({ book }: { book: any }) {
+export default function BookCard({ book }: { book: Book }) {
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
@@ -36,7 +37,7 @@ export default function BookCard({ book }: { book: any }) {
             <CardMedia
                 component="img"
                 height="195"
-                image={book.imageLinks?.thumbnail || book.imageLinks.smallThumbnail}
+                image={book.imageLinks?.thumbnail || book.imageLinks?.smallThumbnail}
             />
             <CardContent>
                 <Typography variant="body1" color="text.secondary">{book.title}</Typography>
@@ -56,9 +57,9 @@ export default function BookCard({ book }: { book: any }) {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography paragraph>Authors: {book.authors.join()}</Typography>
+                    <Typography paragraph>Authors: {book?.authors?.join()}</Typography>
                     <Typography paragraph>{book.description}</Typography>
-                    <Typography paragraph>Published: {book.publishedDate.toLocaleString()}</Typography>
+                    <Typography paragraph>Published: {book?.publishedDate?.toLocaleString()}</Typography>
                 </CardContent>
             </Collapse>
         </Card>
